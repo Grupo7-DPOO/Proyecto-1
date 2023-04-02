@@ -1,14 +1,20 @@
 package Clases;
 
-import java.util.HashMap;
-
-public class Menu extends Servicios{
+public class Menu2{
 	
 	private String nombre_de_plato;
 	private boolean disponibilidad;
 	private String bebida;
 	private int precios;
-	
+	private Plato2 plato2;
+
+	public Menu2(String nombre_de_plato, boolean disponibilidad, String bebida, int precios, Plato2 plato2) {
+	this.nombre_de_plato = nombre_de_plato;
+	this.disponibilidad = disponibilidad;
+	this.bebida = bebida;
+	this.precios = precios;
+	this.plato2 = plato2;
+	}
 
 	public String getNombre_de_plato() {
 		return nombre_de_plato;
@@ -41,6 +47,9 @@ public class Menu extends Servicios{
 	public void setPrecios(int precios) {
 		this.precios = precios;
 	}
-	
-	
+
+	public String toString() {
+		return this.nombre_de_plato + "\t" + this.disponibilidad + "\t" + this.bebida + "\t" + this.precios + "\t" + this.plato2+"\n";
+	}
+
 }
