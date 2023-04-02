@@ -1,5 +1,7 @@
 package Clases;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Habitaciones {
@@ -13,7 +15,7 @@ public class Habitaciones {
 	private String tipo;
 	private boolean vista;
 	private boolean cocina;
-	
+
 	public Habitaciones(int numero, int tarifa, String ubicacion, 
 			boolean balcon, String tipo, boolean vista, boolean cocina) {
 		this.numero = numero;
@@ -83,8 +85,31 @@ public class Habitaciones {
 		}
 	}
 	
-	@Override
-	public String toString() {
-		return this.numero + "\t" + this.tarifa + "\t" + this.ubicacion + "\t" + this.balcon + "\t" + this.tipo+"\t" + this.vista+ "\t" + this.cocina+"\n";
-	}	
+	public Habitaciones consultarHabitacion(int numero) {
+		Habitaciones resultado = null;
+		for(Integer num : this.habitaciones.keySet()) {
+			if (num==numero);{
+			resultado = this.habitaciones.get(num);
+			}
+		}
+		return resultado;		
+	}
+	
+	public void editarHabitacion(int numero, int tarifa, String ubicacion, 
+			boolean balcon, String tipo, boolean vista, boolean cocina) {
+		this.habitaciones.remove(numero);
+		crearHabitacion(numero, tarifa, ubicacion, balcon, tipo, vista, cocina);
+	}
+	
+	public Habitaciones consultarTarifa(int numero) {
+		Habitaciones resultado = (Habitaciones) null;
+		for (Integer num: this.habitaciones.keySet()) {
+			if (num==numero);{
+				Habitaciones habitacion = this.habitaciones.get(num);
+				String key = "Tarifa";
+				resultado = this.habitaciones.get(key);
+				}
+		}
+		return resultado;
+	}
 }
