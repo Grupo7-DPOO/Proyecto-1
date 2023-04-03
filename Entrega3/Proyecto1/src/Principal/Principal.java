@@ -187,7 +187,9 @@ public class Principal {
 				break;
 			default:
 				System.out.println("Opción inválida, por favor intente de nuevo.");
-	sc.close();}}
+		}while (opcion!=17)
+		sc.close();
+	}
 
 	public static void main(String[] args) {
 		new Principal();
