@@ -153,12 +153,10 @@ public class Principal {
 				boolean vista = sc.nextBoolean();
 				System.out.println("¿La habitación tiene cocina?: ");
 				boolean cocina = sc.nextBoolean();
-<<<<<<< HEAD
-				habitacion = new Habitaciones (numero, tarifa, ubicacion, balcon, tipo, vista, cocina);
-				boolean creado = habitacion.crearHabitacion();
-=======
+
+				habitaciones = new Habitaciones(numero, tarifa, ubicacion, balcon, tipo, vista, cocina);
 				boolean creado = habitaciones.crearHabitacion(numero, tarifa, ubicacion, balcon, tipo, vista, cocina);
->>>>>>> 1371bdef7eff638337b2a6566c0abc175449ff3d
+				
 				System.out.println((creado)?"Habitación Creada":"Error: Habitación ya existe");
 			case 9:
 				System.out.println("Ingrese el número de habitación que desea consultar: ");
@@ -189,12 +187,12 @@ public class Principal {
 				String login = sc.next();
 				System.out.println("Ingrese su contraseña: ");
 				String password = sc.next();
-<<<<<<< HEAD
+
 				usuario = new Usuario (password, login);
 				boolean creado1 = usuario.crearUsuario();
-=======
+
 				boolean creado1 = usuario.crearUsuario(password, login);
->>>>>>> 1371bdef7eff638337b2a6566c0abc175449ff3d
+
 				System.out.println((creado1)?"Usuario creado":"Error: Usuario ya existe");
 			case 13:
 				System.out.println("Ingrese el usuario de la persona que desea deshabilitar: ");
