@@ -41,6 +41,7 @@ public class Principal {
 		opcion = sc.nextInt();
 		sc.nextLine(); 
 
+		Object habitacion;
 		switch (opcion) {
 			case 1:
 				System.out.print("Ingrese el nombre del cliente: ");
@@ -151,7 +152,8 @@ public class Principal {
 				boolean vista = sc.nextBoolean();
 				System.out.println("¿La habitación tiene cocina?: ");
 				boolean cocina = sc.nextBoolean();
-				boolean creado = this.habitaciones.crearHabitacion(numero, tarifa, ubicacion, balcon, tipo, vista, cocina);
+				habitacion = new Habitaciones (numero, tarifa, ubicacion, balcon, tipo, vista, cocina);
+				boolean creado = habitacion.crearHabitacion();
 				System.out.println((creado)?"Habitación Creada":"Error: Habitación ya existe");
 			case 9:
 				System.out.println("Ingrese el número de habitación que desea consultar: ");
@@ -182,7 +184,8 @@ public class Principal {
 				String login = sc.next();
 				System.out.println("Ingrese su contraseña: ");
 				String password = sc.next();
-				boolean creado1 = this.usuario.crearUsuario(password, login);
+				usuario = new Usuario (password, login);
+				boolean creado1 = usuario.crearUsuario();
 				System.out.println((creado1)?"Usuario creado":"Error: Usuario ya existe");
 			case 13:
 				System.out.println("Ingrese el usuario de la persona que desea deshabilitar: ");
