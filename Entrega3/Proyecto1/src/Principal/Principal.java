@@ -1,11 +1,12 @@
 package Principal;
-
 import java.util.Scanner;
 import Clases.Habitaciones;
+import Clases.Plato2;
 import Clases.Usuario;
 import Clases.Factura;
 import Clases.Cliente;
 import Clases.Reserva;
+import Clases.Restaurante;
 public class Principal {
 	private Habitaciones habitaciones;
 	private Usuario usuario;
@@ -14,6 +15,7 @@ public class Principal {
 	Cliente cliente = null;
 	Factura factura = null;
 	Reserva reserva = null;
+	Restaurante restaurante;
 	
 	do {
 		System.out.println("Menú principal");
@@ -30,6 +32,10 @@ public class Principal {
 		System.out.println("11. Consultar tarifa");
 		System.out.println("12. Crear usuario");
 		System.out.println("13. Deshabilitar usuario");
+		System.out.println("14. Crear Plato");
+		System.out.println("15. Crear Menu");
+		System.out.println("16. Consultar Platos");
+		System.out.println("17. Consultar Menu");
 		System.out.println("0. Salir");
 		System.out.print("Ingrese una opción: ");
 		opcion = sc.nextInt();
@@ -68,11 +74,11 @@ public class Principal {
 				int id2 = sc.nextInt();
 				sc.nextLine(); 
 				System.out.print("Ingrese el nombre del cliente: ");
-				String cliente = sc.nextLine();
+				String cliente2 = sc.nextLine();
 				System.out.print("Ingrese el nombre del recepcionista: ");
 				String recepcionista = sc.nextLine();
 
-				factura = new Factura(fecha, id2, cliente, recepcionista);
+				factura = new Factura(fecha, id2, cliente2, recepcionista);
 				factura.crearFactura();
 				break;
 			case 4:
@@ -182,6 +188,36 @@ public class Principal {
 				System.out.println("Ingrese el usuario de la persona que desea deshabilitar: ");
 				String login1 = sc.next();
 				this.usuario.deshabilitarUsuario(login1);
+			case 14:
+				System.out.println("Digite id");
+				int id1 = sc.nextInt();
+				System.out.println("Digite nombre");
+				String nombre1 = sc.next();
+				System.out.println("Digite ingredientes");
+				String ingredientes = sc.next();
+				System.out.println("Digite numero ingredientes");
+				int cantidad_ingredientes = sc.nextInt();
+				boolean hecho = this.restaurante.crearPlato(id1, nombre1, ingredientes, cantidad_ingredientes);
+				System.out.println((hecho)?"plato Creado":"Error: plato ya existe");
+			case 15:
+				System.out.println("Digite nombre");
+				String nombre_de_plato = sc.next();
+				System.out.println("Disponibilidad: True or False");
+				boolean disponibilidad = sc.nextBoolean();
+				System.out.println("Digite bebida");
+				String bebida = sc.next();
+				System.out.println("Digite precio");
+				int precios = sc.nextInt();
+				System.out.println("Digite el ID del plato que desea agregar al menú: ");
+				int id11 = sc.nextInt();
+				Plato2 plato = restaurante.getPlato(id11);
+				boolean hecho1 = this.restaurante.crearMenu(nombre_de_plato, disponibilidad, bebida, precios, plato);
+				System.out.println("El plato se ha agregado al menú exitosamente.");
+				System.out.println((hecho1)?"plato Creado":"Error: plato ya existe");
+			case 16:
+				System.out.println(this.restaurante.consultarPlatos());
+			case 17:
+				System.out.println(this.restaurante.consultaMenu());
 			case 0:
 				System.out.println("Saliendo del programa...");
 				break;
