@@ -1,7 +1,7 @@
 package Clases;
 import java.util.HashMap;
 
-public class Restaurante extends Servicios2{
+public class Restaurante extends Servicios{
 
 	private HashMap<String, Menu2> menus;
 	private HashMap<Integer, Plato2> platos;
