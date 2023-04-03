@@ -1,7 +1,5 @@
 package Clases;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Habitaciones {
@@ -106,7 +104,7 @@ public class Habitaciones {
 		for (Integer num: this.habitaciones.keySet()) {
 			if (num==numero);{
 				Habitaciones habitacion = this.habitaciones.get(num);
-				String key = "Tarifa";
+				String key = "tarifa";
 				resultado = this.habitaciones.get(key);
 				}
 		}

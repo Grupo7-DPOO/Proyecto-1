@@ -2,9 +2,11 @@ package Principal;
 
 import java.util.Scanner;
 import Clases.Habitaciones;
+import Clases.Usuario;
 
 public class Principal {
 	private Habitaciones habitaciones;
+	private Usuario usuario;
 	
 	
 	private void crearHabitacion(Scanner sc) {
@@ -55,6 +57,20 @@ public class Principal {
 		int numero = sc.nextInt();
 		this.habitaciones.consultarTarifa(numero);
 	}
+	
+	private void crearUsuario(Scanner sc) {
+		System.out.println("Ingrese se nombre de usuario: ");
+		String login = sc.next();
+		System.out.println("Ingrese su contraseña: ");
+		String password = sc.next();
+		boolean creado = this.usuario.crearUsuario(password, login);
+		System.out.println((creado)?"Usuario creado":"Error: Usuario ya existe");
+	}
+	private void deshabilitarUsuario(Scanner sc) {
+		System.out.println("Ingrese el usuario de la persona que desea deshabilitar: ");
+		String login = sc.next();
+		this.usuario.deshabilitarUsuario(login);;		
+}
 
 	public static void main(String[] args) {
 		new Principal();
