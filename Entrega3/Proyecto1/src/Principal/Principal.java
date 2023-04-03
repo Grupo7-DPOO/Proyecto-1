@@ -24,7 +24,13 @@ public class Principal {
 		System.out.println("5. Crear reserva");
 		System.out.println("6. Cancelar reserva");
 		System.out.println("7. Consultar reserva");
-		System.out.println("8. Salir");
+		System.out.println("8. Crear habitación");
+		System.out.println("9. Consultar habitación");
+		System.out.println("10. Editar habitación");
+		System.out.println("11. Consultar tarifa");
+		System.out.println("12. Crear usuario");
+		System.out.println("13. Deshabilitar usuario");
+		System.out.println("0. Salir");
 		System.out.print("Ingrese una opción: ");
 		opcion = sc.nextInt();
 		sc.nextLine(); 
@@ -125,76 +131,63 @@ public class Principal {
 				System.out.println(resultado3);
 				break;
 			case 8:
+				System.out.println("Ingrese el número de habitación: ");
+				int numero = sc.nextInt();
+				System.out.println("Ingrese la tarifa de la habitación: ");
+				int tarifa = sc.nextInt();
+				System.out.println("Ingrese la ubicación de la habitación: ");
+				String ubicacion = sc.next();
+				System.out.println("¿La habitación tiene balcón?: ");
+				boolean balcon = sc.nextBoolean();
+				System.out.println("Ingrese el tipo de habitación: ");
+				String tipo = sc.next();
+				System.out.println("¿La habitación tiene vista?: ");
+				boolean vista = sc.nextBoolean();
+				System.out.println("¿La habitación tiene cocina?: ");
+				boolean cocina = sc.nextBoolean();
+				boolean creado = this.habitaciones.crearHabitacion(numero, tarifa, ubicacion, balcon, tipo, vista, cocina);
+				System.out.println((creado)?"Habitación Creada":"Error: Habitación ya existe");
+			case 9:
+				System.out.println("Ingrese el número de habitación que desea consultar: ");
+				int numero1 = sc.nextInt();
+				this.habitaciones.consultarHabitacion(numero1);
+			case 10:
+				System.out.println("Ingrese el número de habitación que desea editar: ");
+				int numero11 = sc.nextInt();
+				System.out.println("Ingrese la tarifa de la habitación: ");
+				int tarifa1 = sc.nextInt();
+				System.out.println("Ingrese la ubicación de la habitación: ");
+				String ubicacion1 = sc.next();
+				System.out.println("¿La habitación tiene balcón?: ");
+				boolean balcon1 = sc.nextBoolean();
+				System.out.println("Ingrese el tipo de habitación: ");
+				String tipo1 = sc.next();
+				System.out.println("¿La habitación tiene vista?: ");
+				boolean vista1 = sc.nextBoolean();
+				System.out.println("¿La habitación tiene cocina?: ");
+				boolean cocina1 = sc.nextBoolean();
+				this.habitaciones.editarHabitacion(numero11, tarifa1, ubicacion1, balcon1, tipo1, vista1, cocina1);
+			case 11:
+				System.out.println("Ingrese el número de habitación del que desea conocer la tarifa: ");
+				int numero111 = sc.nextInt();
+				this.habitaciones.consultarTarifa(numero111);
+			case 12:
+				System.out.println("Ingrese se nombre de usuario: ");
+				String login = sc.next();
+				System.out.println("Ingrese su contraseña: ");
+				String password = sc.next();
+				boolean creado1 = this.usuario.crearUsuario(password, login);
+				System.out.println((creado1)?"Usuario creado":"Error: Usuario ya existe");
+			case 13:
+				System.out.println("Ingrese el usuario de la persona que desea deshabilitar: ");
+				String login1 = sc.next();
+				this.usuario.deshabilitarUsuario(login1);
+			case 0:
 				System.out.println("Saliendo del programa...");
 				break;
 			default:
 				System.out.println("Opción inválida, por favor intente de nuevo.");
-		}
-	} while (opcion != 3);
-	sc.close();
-}	
-	private void crearHabitacion(Scanner sc) {
-		System.out.println("Ingrese el número de habitación: ");
-		int numero = sc.nextInt();
-		System.out.println("Ingrese la tarifa de la habitación: ");
-		int tarifa = sc.nextInt();
-		System.out.println("Ingrese la ubicación de la habitación: ");
-		String ubicacion = sc.next();
-		System.out.println("¿La habitación tiene balcón?: ");
-		boolean balcon = sc.nextBoolean();
-		System.out.println("Ingrese el tipo de habitación: ");
-		String tipo = sc.next();
-		System.out.println("¿La habitación tiene vista?: ");
-		boolean vista = sc.nextBoolean();
-		System.out.println("¿La habitación tiene cocina?: ");
-		boolean cocina = sc.nextBoolean();
-		boolean creado = this.habitaciones.crearHabitacion(numero, tarifa, ubicacion, balcon, tipo, vista, cocina);
-		System.out.println((creado)?"Habitación Creada":"Error: Habitación ya existe");		
-	}
-	
-	private void consultarHabitaciones(Scanner sc) {
-		System.out.println("Ingrese el número de habitación que desea consultar: ");
-		int numero = sc.nextInt();
-		this.habitaciones.consultarHabitacion(numero);		
-	}
-	
-	private void editarHabitaciones(Scanner sc) {
-		System.out.println("Ingrese el número de habitación que desea editar: ");
-		int numero = sc.nextInt();
-		System.out.println("Ingrese la tarifa de la habitación: ");
-		int tarifa = sc.nextInt();
-		System.out.println("Ingrese la ubicación de la habitación: ");
-		String ubicacion = sc.next();
-		System.out.println("¿La habitación tiene balcón?: ");
-		boolean balcon = sc.nextBoolean();
-		System.out.println("Ingrese el tipo de habitación: ");
-		String tipo = sc.next();
-		System.out.println("¿La habitación tiene vista?: ");
-		boolean vista = sc.nextBoolean();
-		System.out.println("¿La habitación tiene cocina?: ");
-		boolean cocina = sc.nextBoolean();
-		this.habitaciones.editarHabitacion(numero, tarifa, ubicacion, balcon, tipo, vista, cocina);		
-	}
-	
-	private void consultarTarifa(Scanner sc) {
-		System.out.println("Ingrese el número de habitación del que desea conocer la tarifa: ");
-		int numero = sc.nextInt();
-		this.habitaciones.consultarTarifa(numero);
-	}
-	
-	private void crearUsuario(Scanner sc) {
-		System.out.println("Ingrese se nombre de usuario: ");
-		String login = sc.next();
-		System.out.println("Ingrese su contraseña: ");
-		String password = sc.next();
-		boolean creado = this.usuario.crearUsuario(password, login);
-		System.out.println((creado)?"Usuario creado":"Error: Usuario ya existe");
-	}
-	private void deshabilitarUsuario(Scanner sc) {
-		System.out.println("Ingrese el usuario de la persona que desea deshabilitar: ");
-		String login = sc.next();
-		this.usuario.deshabilitarUsuario(login);;		
-}
+	sc.close();}}
 
 	public static void main(String[] args) {
 		new Principal();
