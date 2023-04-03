@@ -1,11 +1,15 @@
 package Clases;
 
-import java.lang.System.Logger;
 import java.util.HashMap;
 
-public abstract class Usuario {
+public class Usuario {
 	
 		private HashMap<String, Usuario> usuario;
+		
+		public Usuario(String password, String login) {
+			this.password = password;
+			this.login = login;
+		}
 		
 		private String password;
 		private String login;
@@ -20,11 +24,6 @@ public abstract class Usuario {
 			return login;
 		}
 		public void setLogin(String login) {
-			this.login = login;
-		}
-	
-		public Usuario(String password, String login) {
-			this.password = password;
 			this.login = login;
 		}
 		
