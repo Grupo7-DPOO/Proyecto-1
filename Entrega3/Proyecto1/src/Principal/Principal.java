@@ -8,14 +8,15 @@ import Clases.Cliente;
 import Clases.Reserva;
 import Clases.Restaurante;
 public class Principal {
-	private Habitaciones habitaciones;
-	private Usuario usuario;
+ public static void main(String[] args) {
+	Habitaciones habitaciones = null;
+    Usuario usuario = null;
     Scanner sc = new Scanner(System.in);
 	int opcion = 0;
 	Cliente cliente = null;
 	Factura factura = null;
 	Reserva reserva = null;
-	Restaurante restaurante;
+	Restaurante restaurante = null;
 	
 	do {
 		System.out.println("Menú principal");
@@ -152,13 +153,17 @@ public class Principal {
 				boolean vista = sc.nextBoolean();
 				System.out.println("¿La habitación tiene cocina?: ");
 				boolean cocina = sc.nextBoolean();
+<<<<<<< HEAD
 				habitacion = new Habitaciones (numero, tarifa, ubicacion, balcon, tipo, vista, cocina);
 				boolean creado = habitacion.crearHabitacion();
+=======
+				boolean creado = habitaciones.crearHabitacion(numero, tarifa, ubicacion, balcon, tipo, vista, cocina);
+>>>>>>> 1371bdef7eff638337b2a6566c0abc175449ff3d
 				System.out.println((creado)?"Habitación Creada":"Error: Habitación ya existe");
 			case 9:
 				System.out.println("Ingrese el número de habitación que desea consultar: ");
 				int numero1 = sc.nextInt();
-				this.habitaciones.consultarHabitacion(numero1);
+				habitaciones.consultarHabitacion(numero1);
 			case 10:
 				System.out.println("Ingrese el número de habitación que desea editar: ");
 				int numero11 = sc.nextInt();
@@ -174,23 +179,27 @@ public class Principal {
 				boolean vista1 = sc.nextBoolean();
 				System.out.println("¿La habitación tiene cocina?: ");
 				boolean cocina1 = sc.nextBoolean();
-				this.habitaciones.editarHabitacion(numero11, tarifa1, ubicacion1, balcon1, tipo1, vista1, cocina1);
+				habitaciones.editarHabitacion(numero11, tarifa1, ubicacion1, balcon1, tipo1, vista1, cocina1);
 			case 11:
 				System.out.println("Ingrese el número de habitación del que desea conocer la tarifa: ");
 				int numero111 = sc.nextInt();
-				this.habitaciones.consultarTarifa(numero111);
+				habitaciones.consultarTarifa(numero111);
 			case 12:
 				System.out.println("Ingrese se nombre de usuario: ");
 				String login = sc.next();
 				System.out.println("Ingrese su contraseña: ");
 				String password = sc.next();
+<<<<<<< HEAD
 				usuario = new Usuario (password, login);
 				boolean creado1 = usuario.crearUsuario();
+=======
+				boolean creado1 = usuario.crearUsuario(password, login);
+>>>>>>> 1371bdef7eff638337b2a6566c0abc175449ff3d
 				System.out.println((creado1)?"Usuario creado":"Error: Usuario ya existe");
 			case 13:
 				System.out.println("Ingrese el usuario de la persona que desea deshabilitar: ");
 				String login1 = sc.next();
-				this.usuario.deshabilitarUsuario(login1);
+				usuario.deshabilitarUsuario(login1);
 			case 14:
 				System.out.println("Digite id");
 				int id1 = sc.nextInt();
@@ -200,7 +209,7 @@ public class Principal {
 				String ingredientes = sc.next();
 				System.out.println("Digite numero ingredientes");
 				int cantidad_ingredientes = sc.nextInt();
-				boolean hecho = this.restaurante.crearPlato(id1, nombre1, ingredientes, cantidad_ingredientes);
+				boolean hecho = restaurante.crearPlato(id1, nombre1, ingredientes, cantidad_ingredientes);
 				System.out.println((hecho)?"plato Creado":"Error: plato ya existe");
 			case 15:
 				System.out.println("Digite nombre");
@@ -214,23 +223,21 @@ public class Principal {
 				System.out.println("Digite el ID del plato que desea agregar al menú: ");
 				int id11 = sc.nextInt();
 				Plato2 plato = restaurante.getPlato(id11);
-				boolean hecho1 = this.restaurante.crearMenu(nombre_de_plato, disponibilidad, bebida, precios, plato);
+				boolean hecho1 = restaurante.crearMenu(nombre_de_plato, disponibilidad, bebida, precios, plato);
 				System.out.println("El plato se ha agregado al menú exitosamente.");
 				System.out.println((hecho1)?"plato Creado":"Error: plato ya existe");
 			case 16:
-				System.out.println(this.restaurante.consultarPlatos());
+				System.out.println(restaurante.consultarPlatos());
 			case 17:
-				System.out.println(this.restaurante.consultaMenu());
+				System.out.println(restaurante.consultaMenu());
 			case 0:
 				System.out.println("Saliendo del programa...");
 				break;
 			default:
 				System.out.println("Opción inválida, por favor intente de nuevo.");
-		}while (opcion!=17)
+			}
+		} while (opcion != 17);
 		sc.close();
-	}
+	}	
 
-	public static void main(String[] args) {
-		new Principal();
-	}
 }
