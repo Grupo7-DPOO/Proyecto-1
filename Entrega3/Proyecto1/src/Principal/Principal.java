@@ -189,10 +189,7 @@ public class Principal {
 				String password = sc.next();
 
 				usuario = new Usuario (password, login);
-				boolean creado1 = usuario.crearUsuario();
-
 				boolean creado1 = usuario.crearUsuario(password, login);
-
 				System.out.println((creado1)?"Usuario creado":"Error: Usuario ya existe");
 			case 13:
 				System.out.println("Ingrese el usuario de la persona que desea deshabilitar: ");
@@ -202,12 +199,12 @@ public class Principal {
 				System.out.println("Digite id");
 				int id1 = sc.nextInt();
 				System.out.println("Digite nombre");
-				String nombre1 = sc.next();
+				String nombre2 = sc.next();
 				System.out.println("Digite ingredientes");
 				String ingredientes = sc.next();
 				System.out.println("Digite numero ingredientes");
 				int cantidad_ingredientes = sc.nextInt();
-				boolean hecho = restaurante.crearPlato(id1, nombre1, ingredientes, cantidad_ingredientes);
+				boolean hecho = restaurante.crearPlato(id1, nombre2, ingredientes, cantidad_ingredientes);
 				System.out.println((hecho)?"plato Creado":"Error: plato ya existe");
 			case 15:
 				System.out.println("Digite nombre");
