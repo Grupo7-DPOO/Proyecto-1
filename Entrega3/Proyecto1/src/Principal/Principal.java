@@ -1,5 +1,4 @@
 package Principal;
-
 import java.util.Scanner;
 import Clases.Habitaciones;
 import Clases.Plato2;
@@ -75,11 +74,11 @@ public class Principal {
 				int id2 = sc.nextInt();
 				sc.nextLine(); 
 				System.out.print("Ingrese el nombre del cliente: ");
-				String cliente = sc.nextLine();
+				String cliente2 = sc.nextLine();
 				System.out.print("Ingrese el nombre del recepcionista: ");
 				String recepcionista = sc.nextLine();
 
-				factura = new Factura(fecha, id2, cliente, recepcionista);
+				factura = new Factura(fecha, id2, cliente2, recepcionista);
 				factura.crearFactura();
 				break;
 			case 4:
